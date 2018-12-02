@@ -4,6 +4,8 @@
 ![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/DyvakYA/gradle-springboot-mongodb.svg)
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg) 
 ![Completeness](https://img.shields.io/badge/completeness-90%25-brightgreen.svg)
+![Docker Automated build](https://img.shields.io/docker/automated/dyvak/repository.svg)
+
 
 ## Sample of using Gradle + SpringBoot + MongoDB
 
