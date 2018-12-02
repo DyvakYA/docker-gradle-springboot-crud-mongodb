@@ -1,28 +1,23 @@
-import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
-
 buildscript {
     ext {
         springBootVersion = '1.4.0.RELEASE'
-        gradleDockerPluginVersion = '3.0.1'
+        gradleDockerPluginVersion = '1.1'
     }
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-        classpath "com.bmuschko:gradle-docker-plugin:${gradleDockerPluginVersion}"
+        classpath "se.transmode.gradle:gradle-docker:${gradleDockerPluginVersion}"
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'groovy'
-apply plugin: 'idea'
-apply plugin: 'eclipse'
-apply plugin: 'spring-boot'
-apply plugin: 'com.bmuschko.docker-remote-api'
+apply plugin: 'application'
+apply plugin: 'docker'
 
 group 'com.dyvak'
-version '1.0'
+
+mainClassName = 'com.application.App'
 
 jar {
     baseName = 'application'
@@ -38,59 +33,7 @@ repositories {
 dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.1.0.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.1.0.RELEASE'
-    compile 'org.codehaus.groovy:groovy'
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.0.6.RELEASE'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
-eclipse {
-    classpath {
-        containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
-        containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
-    }
-}
-
-//update project version in Spring Boot banner
-processResources {
-    inputs.property "projectVersion", version.toString()
-    filter org.apache.tools.ant.filters.ReplaceTokens, tokens: ['version': version.toString()]
-}
-
-docker {
-    if (System.env.DOCKER_HOST) {
-        url = "$System.env.DOCKER_HOST".replace("tcp", "https")
-        if (System.env.DOCKER_CERT_PATH) {
-            certPath = new File(System.env.DOCKER_CERT_PATH)
-        }
-    } else {
-        url = 'unix:///var/run/docker.sock'
-    }
-}
-
-//unpack Spring Boot Fat Jar and preserve file modification date
-task unpackFatJar(type: Copy, dependsOn: 'assemble') {
-    def dockerWorkingDir = file("${buildDir}/docker")
-
-    from zipTree(jar.archivePath)
-    into dockerWorkingDir
-    includeEmptyDirs = false
-
-    // hack to preserve modification date - required for Docker cache
-    def copyDetails = []
-    eachFile { copyDetails << it }
-    doLast { restoreLastModifiedDate(copyDetails, dockerWorkingDir) }
-}
-
-task buildDockerImage(type: DockerBuildImage, dependsOn: "unpackFatJar") {
-    inputDir = project.projectDir
-    tag = "orzeh/${project.name}:${project.version}"
-}
-
-def restoreLastModifiedDate(List copyDetails, File dir) {
-    copyDetails.each { FileCopyDetails details ->
-        def target = new File(dir, details.path)
-        if(target.exists()) {
-            target.setLastModified(details.lastModified)
-        }
-    }
-}
