@@ -5,7 +5,9 @@ ADD src src
 ADD build.gradle .
 RUN gradle build
 
-ADD ./build/libs/aplication.jar /app/
+FROM openjdk:8-jdk-alpine
+
+ADD ./build/libs/apllication.jar /app/
 CMD ["java", "-Xmx200m", "-jar", "/app/application.jar"]
 
 EXPOSE 5000
