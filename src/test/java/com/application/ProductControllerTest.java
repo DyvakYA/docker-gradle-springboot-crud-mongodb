@@ -41,16 +41,16 @@ public class ProductControllerTest {
 
         //List<Product> products = singletonList(product);
 
-        Product product = Product.builder()
-                .id(1)
-                .name("Good")
-                .description("Best product in th word")
-                .build();
-        // given(productController.create(product)).willReturn()
-
-        //productController.create(product);
-        mvc.perform(get("localhost:8000/products")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk());
+//        Product product = Product.builder()
+//                .id(1)
+//                .name("Good")
+//                .description("Best product in th word")
+//                .build();
+//        // given(productController.create(product)).willReturn()
+//
+//        //productController.create(product);
+//        mvc.perform(get("localhost:8000/products")
+//                .contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(MockMvcResultMatchers.status().isOk());
    }
 }
