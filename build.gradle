@@ -5,6 +5,7 @@ plugins {
 group 'com.dyvak'
 version '1.0-SNAPSHOT'
 
+name 'application'
 sourceCompatibility = 1.8
 
 repositories {
