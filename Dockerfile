@@ -3,7 +3,6 @@ MAINTAINER Dyvak Yurii <dyvakyurii@gmail.com>
 
 ADD src src
 ADD build.gradle .
-ADD gradle.properties .
 RUN gradle build
 
 FROM openjdk:8-jdk-alpine
