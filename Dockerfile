@@ -1,12 +1,8 @@
-FROM gradle:4.3.0-jdk8-alpine
+FROM openjdk:8-jdk-alpine
 MAINTAINER Dyvak Yurii <dyvakyurii@gmail.com>
-
-ADD src src
-ADD build.gradle .
-RUN gradle build
-
 ADD ./build/libs/application.jar /app/
+EXPOSE 5000
 CMD ["java", "-Xmx200m", "-jar", "/app/application.jar"]
 
-EXPOSE 5000
+
 
