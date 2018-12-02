@@ -7,7 +7,7 @@ RUN gradle build
 
 FROM openjdk:8-jdk-alpine
 
-ADD ./build/libs/apllication.jar /app/
+ADD ./build/libs/application.jar /app/
 CMD ["java", "-Xmx200m", "-jar", "/app/application.jar"]
 
 EXPOSE 5000
