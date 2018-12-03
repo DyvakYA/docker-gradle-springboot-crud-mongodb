@@ -3,8 +3,9 @@ MAINTAINER Dyvak Yurii <dyvakyurii@gmail.com>
 ADD src src
 ADD build.gradle .
 RUN gradle build
+CMD ["docker", "container", "ls"]
 
-COPY /build /app
+  
 CMD ["java", "-Xmx200m", "-jar", "/app/application.jar"]
 
 EXPOSE 5000
