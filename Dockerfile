@@ -4,7 +4,7 @@ ADD src src
 ADD build.gradle .
 RUN gradle build
 
-COPY /application.jar /app
+COPY /build /app
 CMD ["java", "-Xmx200m", "-jar", "/app/application.jar"]
 
 EXPOSE 5000
