@@ -4,6 +4,7 @@ RUN ls
 ADD src src
 ADD build.gradle .
 RUN gradle build
+RUN ls
 ADD ./build/libs/application.jar /app/
 CMD java -Xmx200m -jar /app/application.jar
 EXPOSE 5000
