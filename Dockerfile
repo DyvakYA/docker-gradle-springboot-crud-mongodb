@@ -1,6 +1,6 @@
 FROM gradle:4.3.0-jdk8-alpine
 MAINTAINER Dyvak Yurii <dyvakyurii@gmail.com>
-RUN ll
+RUN ls
 ADD src src
 ADD build.gradle .
 RUN gradle build
