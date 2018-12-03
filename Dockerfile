@@ -5,8 +5,7 @@ ADD build.gradle .
 RUN gradle build
 RUN cd ./build/libs && ls
 RUN ls -a
-WORKDIR /newfolder
-RUN mkdir -p /app
+WORKDIR /app
 COPY ./build /app/
 COPY build/libs/application.jar /app/
 CMD java -Xmx200m -jar /app/application.jar
