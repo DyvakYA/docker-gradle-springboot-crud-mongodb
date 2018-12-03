@@ -3,12 +3,9 @@ MAINTAINER Dyvak Yurii <dyvakyurii@gmail.com>
 ADD src src
 ADD build.gradle .
 RUN gradle build
-RUN cd ./build/libs && ls
-RUN ls -a
-RUN ls -laF
-WORKDIR /app
-COPY ./build /app/
-COPY build/libs/application.jar /app/
+
+
+COPY . /app/
 CMD java -Xmx200m -jar /app/application.jar
 EXPOSE 5000
 
