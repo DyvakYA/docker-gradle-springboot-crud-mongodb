@@ -6,6 +6,7 @@ RUN gradle build
 
 
 COPY . /app/
+RUN cd /app && ls -a
 CMD java -Xmx200m -jar /app/application.jar
 EXPOSE 5000
 
