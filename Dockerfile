@@ -5,7 +5,7 @@ ADD build.gradle .
 RUN gradle build
 RUN cd ./build/libs && ls
 RUN ls -a
-COPY build/libs/application.jar /app/
+COPY ./build /app/
 CMD java -Xmx200m -jar /app/application.jar
 EXPOSE 5000
 
