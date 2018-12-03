@@ -3,7 +3,7 @@ MAINTAINER Dyvak Yurii <dyvakyurii@gmail.com>
 ADD src src
 ADD build.gradle .
 RUN gradle build
-RUN cd /build
+RUN cd ./build
 RUN ls
 ADD ./ /app/
 CMD java -Xmx200m -jar /app/application.jar
