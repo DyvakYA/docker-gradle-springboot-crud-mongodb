@@ -10,7 +10,7 @@ RUN ls -a
 #RUN mkdir /app
 #WORKDIR /app
 
-COPY build/libs/application.jar /app                       
+COPY build/libs/application.jar .            
 #RUN cd /app && ls -a
 RUN cd build/ && ls -a
 
