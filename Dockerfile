@@ -3,8 +3,8 @@ MAINTAINER Dyvak Yurii <dyvakyurii@gmail.com>
 
 RUN ls -a
 
-RUN mkdir /app
-WORKDIR /app
+#RUN mkdir /app
+#WORKDIR /app
 
 ADD ./build/libs/application.jar /app                       
 RUN cd /app && ls -a
