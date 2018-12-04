@@ -10,9 +10,9 @@ RUN ls -a
 #RUN mkdir /app
 #WORKDIR /app
 
-ADD ./build/libs/application.jar /app                       
+#ADD ./build/libs/application.jar /app                       
 RUN cd /app && ls -a
 
-CMD java -Xmx200m -jar /app/application.jar
+CMD java -Xmx200m -jar /build/libs/application.jar
 EXPOSE 5000
 
