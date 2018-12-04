@@ -12,6 +12,7 @@ RUN ls -a
 
 #ADD ./build/libs/application.jar /app                       
 RUN cd /app && ls -a
+RUN cd build/ && ls -a
 
 CMD java -Xmx200m -jar /build/libs/application.jar
 EXPOSE 5000
