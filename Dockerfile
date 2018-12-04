@@ -11,7 +11,7 @@ RUN ls -a
 #WORKDIR /app
 
 COPY build/libs/application.jar /app                       
-RUN cd /app && ls -a
+#RUN cd /app && ls -a
 RUN cd build/ && ls -a
 
 CMD java -Xmx200m -jar /app/application.jar
