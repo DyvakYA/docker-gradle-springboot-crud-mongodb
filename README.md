@@ -7,18 +7,33 @@
 ![Docker Automated build](https://img.shields.io/docker/automated/dyvak/repository.svg)
 
 
-## Sample of using Gradle + SpringBoot + MongoDB
+## Example of using Docker, Gradle, SpringBoot, MongoDB
+  
+### Introduction
+  
+### Getting started
 
+ **What you’ll need**
+ 
+ * A favorite text editor or IDE
+ * JDK 1.8 or later
+ * Spring Boot
+ * Gradle
+ 
+ ##### Product API instruction
+  Method	| Path	| Description	| User authenticated | Available from UI
+  --- | --- | --- |:---:|:---:|
+  GET	| /products	| Get all products data	| × | ×
+  GET	| /products/{id}	| Get specified products data	| × | ×
+  POST	| /products	| Create new product data	| × | ×
+  PUT	| /products/{id}	| Update specified product data	| × | ×
+  DELETE	| /products/{id[]}	| Delete specified products data	| × | ×
+ 
+### License
   
-   ## Warning
-  
-  The number of bugs may increase and the code will cease to be supported.
-  The owner of this repository is not responsible for any consequences.
-  
-  ## License
-  
-  This project is licensed under the terms of the MIT license.
+This project is licensed under the terms of the MIT license.
 
+ **Free Software, Hell Yeah!**
 
 
 
