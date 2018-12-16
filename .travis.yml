@@ -1,6 +1,6 @@
 language: java
 sudo: false # faster builds
-jdk: openjdk10
+jdk: oraclejdk8
 env:
   global:
   - CC_TEST_REPORTER_ID=8010e50ae6879fb8178eacf450f4609a05954fb48e9d2a2f7e74d2f010c9a251
