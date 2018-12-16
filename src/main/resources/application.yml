@@ -6,3 +6,10 @@ server:
   port: 8000
   email: dyvakyurii@gmail.com
 
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  level:
+    org.springframework.web: ERROR
+    com.application: INFO
+    org.hibernate: ERROR
