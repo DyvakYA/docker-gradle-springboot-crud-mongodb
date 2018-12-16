@@ -9,7 +9,6 @@ before_script:
 - chmod +x ./cc-test-reporter
 - ./cc-test-reporter before-build
 script:
-- export JAVA_HOME=$HOME/oraclejdk8
-- $TRAVIS_BUILD_DIR/install-jdk.sh --install oraclejdk8 --target $JAVA_HOME
+  gradle check
 after_script:
 - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
