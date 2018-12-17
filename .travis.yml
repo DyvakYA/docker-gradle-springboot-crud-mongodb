@@ -11,6 +11,16 @@ before_script:
 - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
 - chmod +x ./cc-test-reporter
 - ./cc-test-reporter before-build
+  # Test MongoDB connection; Fails after tries
+  - |
+    echo "Testing MongoDB connection...";tries=4;
+    i=0;
+    while [ $i -lt $tries ]; do fail=$(mongo --eval db 2>&1 >/dev/null | grep "connect failed");
+      if [ "$fail" ] && [ $[ $i+1 ] -eq $tries ] ; then echo "Error: Could not connect to mongodb"; exit 1;
+      elif [ "$fail" ]; then sleep 3; i=$[ $i+1 ];
+      else echo "OK"; i=$tries; fi;
+    done
+  - echo "... MongoDB OK"
 
 after_script:
 - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
