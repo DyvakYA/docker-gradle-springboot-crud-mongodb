@@ -4,8 +4,8 @@ MAINTAINER Dyvak Yurii <dyvakyurii@gmail.com>
 ADD src src
 ADD build.gradle build.gradle 
 RUN gradle build
-RUN ls -a
-RUN cd build/ && ls -a
+# RUN ls -a
+# RUN cd build/ && ls -a
 # RUN cd build/libs/ && ls -a
 # ADD ./build/libs/Application.jar /app/
 
