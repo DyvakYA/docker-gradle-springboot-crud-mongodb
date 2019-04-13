@@ -4,6 +4,7 @@ import com.application.model.Product;
 import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,7 @@ public class ProductRepositoryTest {
     }
 
     // Create new Account
+    @Ignore
     @Test
     public void whenCreateNewProduct() {
         // given
@@ -56,6 +58,7 @@ public class ProductRepositoryTest {
     }
 
     // Find one Account by ID
+    @Ignore
     @Test
     public void whenFindById_thenReturnProduct() {
         // when
@@ -69,6 +72,7 @@ public class ProductRepositoryTest {
     }
 
     @Test
+    @Ignore
     public void whenFindAll_thenReturnListWithOneProduct() {
         // when
         Optional<Product> optional = repository.findById(product.getId());
@@ -85,6 +89,7 @@ public class ProductRepositoryTest {
     }
 
     // Update exist product
+    @Ignore
     @Test
     public void whenUpdateExistProduct() {
         Optional<Product> found = repository.findById(product.getId());
@@ -102,6 +107,7 @@ public class ProductRepositoryTest {
     }
 
     // Delete exist product
+    @Ignore
     @Test
     public void whenDeleteExistProduct() {
         Optional<Product> optional = repository.findById(product.getId());

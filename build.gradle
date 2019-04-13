@@ -1,35 +1,39 @@
 buildscript {
-    ext {
-        springBootVersion = '1.4.0.RELEASE'
-        gradleDockerPluginVersion = '1.1'
-    }
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-        classpath "se.transmode.gradle:gradle-docker:${gradleDockerPluginVersion}"
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
     }
 }
 
-apply plugin: 'application'
-apply plugin: 'docker'
+// --------------------------------------------------------
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
+// Grade attributes
 group 'com.dyvak'
-
-mainClassName = 'com.application.App'
 
 jar {
     baseName = 'application'
+    manifest {
+        attributes(
+                'Main-Class': 'com.application.App'
+        )
+    }
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
+// Get dependencies from maven central repository
 repositories {
     mavenCentral()
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+// Project dependencies
 dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.1.0.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.1.0.RELEASE'
