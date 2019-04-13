@@ -6,10 +6,10 @@ ADD build.gradle build.gradle
 RUN gradle build
 RUN ls -a
 RUN cd build/ && ls -a
- #RUN cd build/libs/ && ls -a
-ADD ./build/libs/Application.jar /app/
+# RUN cd build/libs/ && ls -a
+# ADD ./build/libs/Application.jar /app/
 
-CMD ["java", "-Xmx200m", "-jar", "/app/Application.jar"]
+CMD ["java", "-Xmx200m", "-jar", "/build/libs/Application.jar"]
 EXPOSE 5000
 
 
