@@ -13,6 +13,8 @@ CMD ["java", "-Xmx200m", "-jar", "/build/libs/Application.jar"]
 
 CMD java -Xmx200m -jar /build/libs/application.jar
 
+ENTRYPOINT ["java", "-jar", "/build/libs/Application.jar"]
+
 EXPOSE 5000
 
 
