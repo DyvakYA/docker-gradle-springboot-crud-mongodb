@@ -10,6 +10,9 @@ RUN gradle build
 # ADD ./build/libs/Application.jar /app/
 
 CMD ["java", "-Xmx200m", "-jar", "/build/libs/Application.jar"]
+
+CMD java -Xmx200m -jar /build/libs/application.jar
+
 EXPOSE 5000
 
 
