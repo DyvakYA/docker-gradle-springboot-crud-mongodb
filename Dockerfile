@@ -7,7 +7,7 @@ RUN gradle build
 RUN ls -a
 RUN cd build/ && ls -a
  #RUN cd build/libs/ && ls -a
-COPY ./build/libs/Application.jar /app/
+ADD ./build/libs/Application.jar /app/
 
 CMD ["java", "-Xmx200m", "-jar", "/app/Application.jar"]
 EXPOSE 5000
