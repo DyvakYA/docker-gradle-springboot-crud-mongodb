@@ -5,8 +5,9 @@ ADD src src
 ADD build.gradle build.gradle 
 RUN gradle build
 
-COPY build/libs/Application.jar .
+COPY build/libs/Application.jar /app/
 
-CMD java -Xmx200m -jar /app/Application.jar
+CMD ["java", "-Xmx200m", "-jar", "/app/Application.jar"]
 EXPOSE 5000
+
 
